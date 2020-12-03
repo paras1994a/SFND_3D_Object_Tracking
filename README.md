@@ -1,10 +1,13 @@
 # SFND Collision Detection System
 
+![3D_tracking](https://user-images.githubusercontent.com/56697957/100959706-240ca980-351f-11eb-94e9-abeb0c7b52f6.gif)
+
+
 This project combines 2D Image features with 3D Lidar Points to track 3D objects in time in order to get a robust estimate of time-to-collision for the car ahead of the point-of-view car (or the ego car) in each scene. The resulting 3D tracking model allows to estimate TTC using both Camera and Lidar data which could be used to introduce an extra safety factor or redundancy in such Safety critical systems. Various keypoint detectors, descriptors, matching methods have been used for feature tracking , and a pretrained YOLO network is used for Object detection in order to isolate and associating lidar points and image keypoints to preceeding vehicle and track it over frames. It is necessary to implement object tracking in time to be able to compute TTC. KITTI Object tracking highway data sequences have been used in this project. In the end Performance evaluation was done to detect suitable detector/descripter combination and identify situations that could lead to faulty TTC measurements by camera or Lidar and identify shortcomings of individual sensors and how those problems should be addressed using data fusion of these two modalities. 
 
 
 
-<img src="images/course_structure.jpg" width="414" height="414" />
+<img src="images/course_structure.JPG" width="414" height="414" />
 
 
 ## Dependencies for Running Locally
@@ -47,9 +50,9 @@ This project combines 2D Image features with 3D Lidar Points to track 3D objects
 
 1. Estimating TTC with lidar is prone to errors because of outliers. But this can be reduced by incorporating some filtering method where instead of chosing the closes point (with respect to x coordinate) from the vehicle either mean of all the points or median of the points or 25th percentile etc. is considered for calculation. In the current implementation median is used and it does a good job in reducing the outlier effect. However TTC incresase suddenly in one of the frames before it returns to plausible value. This is because of the Lidar reflections from Rear view mirror inside preceeding vehicle which skews the median value too much. These points will have to be explicity removed using advanced point cloud filtering techniques.
 
-<img src="images/lidar.jpg" width="320" height="320" />
+<img src="images/lidar.JPG" width="320" height="320" />
 
-<img src="images/lidar_ttc.jpg" width="414" height="414" />
+<img src="images/lidar_ttc.JPG" width="414" height="414" />
 
 
 
